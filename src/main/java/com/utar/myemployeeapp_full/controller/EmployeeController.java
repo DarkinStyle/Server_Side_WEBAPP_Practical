@@ -9,6 +9,10 @@ import org.codehaus.jackson.map.ObjectMapper;
 import javax.ejb.EJB;
 import javax.ejb.EJBException;
 import javax.inject.Inject;
+import javax.json.Json;
+import javax.json.bind.Jsonb;
+import javax.json.bind.JsonbBuilder;
+import javax.json.bind.JsonbConfig;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
@@ -63,6 +67,9 @@ public class EmployeeController extends HttpServlet {
                 flag = true;
             } else if (ValidateManageLogic.validateManager(request).equals("AJAX")) {
                 List<Employee> h = empbean.searchEmployeeAjax(eid);
+                JsonbConfig config = new JsonbConfig().withFormatting(Boolean.TRUE);
+
+                Jsonb jsonb = JsonbBuilder.create(config);
 
                 response.setContentType("application/json");
                 response.setCharacterEncoding("UTF-8");
