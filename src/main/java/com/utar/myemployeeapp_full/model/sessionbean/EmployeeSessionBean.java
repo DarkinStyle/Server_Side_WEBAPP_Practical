@@ -44,43 +44,6 @@ public class EmployeeSessionBean implements EmployeeSessionBeanLocal {
 
     }
 
-//    public List<Employee> readEmployee(
-//            int currentPage, int recordsPerPage, String keyword, String direction) throws EJBException {
-//        Query q = null;
-//        int start = 0;
-//        direction = " " + direction;
-//        System.out.println(keyword);
-//
-//        try {
-//            if (keyword.isEmpty()) {
-//                q =
-//                        em.createNativeQuery(
-//                                "SELECT * FROM employees.employee e order by e.id" + direction, Employee.class);
-//                start = currentPage * recordsPerPage - recordsPerPage;
-//            } else {
-//                keyword = keyword.toLowerCase(Locale.ENGLISH);
-//                q =
-//                        em.createNativeQuery(
-//                                "SELECT * from employees.employee e WHERE lower(concat(id,first_name,last_name,gender)) LIKE ? order by e.id" + direction,
-//                                Employee.class);
-//                start = currentPage * recordsPerPage - recordsPerPage; // Pagination
-//                q.setParameter(1, "%" + keyword + "%");
-//                System.out.println(q.getParameter(1));
-//            }
-//            System.out.println(start);
-//            List<Employee> results =
-//                    q.setFirstResult(start).setMaxResults(recordsPerPage).getResultList();
-//            System.out.println(results);
-//            return results;
-//
-//        } catch (Exception ex) {
-//            System.out.println("You messed up kid");
-//        }
-//
-//        return null;
-//    }
-
-
     @Override
     public int getNumberOfRows(String keyword) throws EJBException {
         // TODO Auto-generated method stub
@@ -144,4 +107,24 @@ public class EmployeeSessionBean implements EmployeeSessionBeanLocal {
         e.setHireDate(HD);
         em.persist(e); }
 
+
+    public List<Employee> searchEmployeeAjax(String id) throws EJBException {
+        Query q = em.createNamedQuery("Employee.findbyId");
+
+        try {
+            Long d = Long.valueOf(id);
+        } catch (NumberFormatException nfe) {
+            return null;
+        }
+            q.setParameter("id", Long.valueOf(id));
+            List<Employee> h = q.getResultList();
+
+            if(h.isEmpty()) {
+                return null;
+            } else {
+                return h;
+            }
+
+    }
 }
+

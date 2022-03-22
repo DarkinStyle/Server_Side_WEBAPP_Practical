@@ -114,8 +114,7 @@
         <input type="hidden" name="currentPage" value="<%=currentPage%>" /> <input
             type="hidden" name="recordsPerPage" value="<%=recordsPerPage%>" /> <input
             type="hidden" name="keyword" value="<%=keyword%>" />
-        <input
-                type="hidden" name="direction" value="<%=direction%>" />
+
     </form>
 </div>
 
@@ -131,8 +130,7 @@
             type="hidden" name="recordsPerPage" value="<%=recordsPerPage%>" />
         <input
                 type="hidden" name="direction" value="<%=direction%>" />
-        <input
-                type="hidden" name="keyword" value="<%=keyword%>" />
+
 
     </form>
 </div>

@@ -20,11 +20,11 @@ public class PaginationServlet extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
 
-    //@EJB
-    //private EmployeeSessionBeanLocal empbean;
+    @EJB
+    private EmployeeSessionBeanLocal empbean;
 
-    @Inject
-    private EmployeeService empbean;
+//    @Inject
+//    private EmployeeService empbean;
 
 
     @Override
