@@ -1,4 +1,4 @@
-package com.utar.myemployeeapp_full;
+package com.utar.myemployeeapp_full.controller;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
