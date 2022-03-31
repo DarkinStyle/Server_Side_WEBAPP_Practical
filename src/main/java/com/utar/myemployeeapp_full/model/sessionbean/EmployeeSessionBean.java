@@ -1,5 +1,6 @@
 package com.utar.myemployeeapp_full.model.sessionbean;
 
+import javax.ejb.EJB;
 import javax.ejb.EJBException;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -126,5 +127,37 @@ public class EmployeeSessionBean implements EmployeeSessionBeanLocal {
             }
 
     }
+
+    @Override
+    public List<Employee> getEmployeeByName(String firstName, String lastName) throws EJBException {
+        //TODO: Auto-generated method stub
+
+        Query q = em.createNamedQuery("Employee.findbyFNameLName");
+        q.setParameter("firstName", firstName);
+        q.setParameter("lastName", lastName);
+        List<Employee> f = q.getResultList();
+
+        if(!f.isEmpty()) {
+            return f;
+        } else {
+            return null;
+        }
+    }
+
+    @Override
+    public List<Employee> getEmployee(String id) throws EJBException {
+        // TODO: Auto-generated method stub
+
+        Query q = em.createNamedQuery("Employee.findbyId");
+        q.setParameter("id", Long.valueOf(id));
+        List<Employee> f = q.getResultList();
+
+        if(!f.isEmpty()) {
+            return f;
+        } else {
+            return null;
+        }
+    }
+
 }
 
