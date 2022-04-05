@@ -49,5 +49,8 @@
         <br><input type="submit" value="Confirm"/>
     </form>
 </div>
+
+<p><a href="Logout">Go Back to Main Page</a></p>
+
 </body>
 </html>
